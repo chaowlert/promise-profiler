@@ -1,0 +1,57 @@
+{
+  "name": "promise-profiler",
+  "version": "0.1.0",
+  "description": "Track promise & non-promise execution time",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/chaowlert/promise-profiler.git"
+  },
+  "keywords": [
+    "profiler",
+    "promise"
+  ],
+  "author": "Chaowlert Chaisrichalermpol",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/chaowlert/promise-profiler/issues"
+  },
+  "homepage": "https://github.com/chaowlert/promise-profiler#readme",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "test": "gulp",
+    "prepublish": "gulp prepublish"
+  },
+  "devDependencies": {
+    "@types/chai": "4.0.0",
+    "@types/mocha": "2.2.41",
+    "@types/sinon": "2.2.2",
+    "babel-polyfill": "6.23.0",
+    "chai": "4.0.1",
+    "gulp": "3.9.1",
+    "gulp-bump": "2.7.0",
+    "gulp-clean": "0.3.2",
+    "gulp-istanbul": "1.1.1",
+    "gulp-istanbul-report": "0.0.1",
+    "gulp-listfiles": "0.1.0",
+    "gulp-load-plugins": "1.5.0",
+    "gulp-mocha": "3.0.1",
+    "gulp-ng-annotate": "2.0.0",
+    "gulp-sourcemaps": "2.6.0",
+    "gulp-tslint": "8.1.0",
+    "gulp-typedoc": "2.0.2",
+    "gulp-typescript": "3.1.7",
+    "harmonize": "2.0.0",
+    "merge2": "1.0.3",
+    "remap-istanbul": "0.9.5",
+    "run-sequence": "1.2.2",
+    "sinon": "2.3.2",
+    "tslint": "5.4.0",
+    "typedoc": "0.7.1",
+    "typescript": "2.3.4"
+  },
+  "dependencies": {}
+}
