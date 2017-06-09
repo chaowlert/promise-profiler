@@ -1,4 +1,4 @@
-import { Profile } from '../src/';
+import { Profiler } from '../src/';
 import { expect } from 'chai';
 
 describe('MaybePromise', () => {
@@ -8,7 +8,7 @@ describe('MaybePromise', () => {
         let errorFn = function errorFn(a: number, b: number) { throw a + b; };
         let rejectFn = (a: number, b: number) => Promise.reject(a + b);
 
-        let profiler = new Profile();
+        let profiler = new Profiler();
         normalFn = profiler.patch(normalFn, 'normalFn');
         promiseFn = profiler.patch(promiseFn, 'promiseFn');
         errorFn = profiler.patch(errorFn);

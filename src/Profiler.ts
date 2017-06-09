@@ -11,7 +11,7 @@ export interface IProfilingMetric {
     avg?: number;
 }
 
-export class Profile {
+export class Profiler {
     metrics: Record<string, IProfilingMetric> = {};
     active: boolean;
 

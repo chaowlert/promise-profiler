@@ -1,6 +1,6 @@
 {
   "name": "promise-profiler",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Track promise & non-promise execution time",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
