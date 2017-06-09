@@ -12,8 +12,13 @@ npm install profile-profiler --save
 ### Patch function
 
 ```javascript
-//name can be omit if function already has name
-fn = profiler.patch(fn, 'name');
+fn = profiler.patch(fn, 'name');    //name can be omit to use function name
+```
+
+### Patch object
+
+```javascript
+profiler.patch(obj, 'name');    //name can be omit to use class name
 ```
 
 ### Turn profiler on/off

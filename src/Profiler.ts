@@ -15,7 +15,52 @@ export class Profiler {
     metrics: Record<string, IProfilingMetric> = {};
     active: boolean;
 
-    patch<T extends Function>(func: T, name?: string): T {
+    patch<T extends Function>(func: T, name?: string): T;
+    patch<T extends Object>(service: T, name?: string): T;
+    patch<T>(obj: T, name?: string): T {
+        let type = typeof obj;
+        switch (type) {
+            case 'function':
+                return this.patchFunction<any>(obj, name);
+            case 'object':
+                return this.patchObject<any>(obj, name);
+            default:
+                throw new Error('not support patching type: ' + type);
+        }
+    }
+
+    private patchObject<T extends Object>(service: T, name?: string): T {
+        if (!name) {
+            name = service.constructor.name;
+        }
+
+        let keys = getAllProps(service);
+        for (let key of keys) {
+            let prop = service[key];
+            if (typeof prop === 'function') {
+                service[key] = this.patchFunction(prop, name + '.' + key);
+            }
+        }
+
+        return service;
+
+        function getAllProps(obj: any) {
+            let props = new Set<string>();
+
+            do {
+                let names = Object.getOwnPropertyNames(obj);
+                for (let n of names) {
+                    props.add(n);
+                }
+                obj = Object.getPrototypeOf(obj);
+            } while (obj && obj.constructor.name !== 'Object');
+
+            props.delete('constructor');
+            return Array.from(props);
+        }
+    }
+
+    private patchFunction<T extends Function>(func: T, name?: string): T {
         if (!name) {
             name = func.name;
         }
@@ -49,8 +94,8 @@ export class Profiler {
             this.metrics[name] = metric = {
                 name: name,
                 sum: 0,
-                min: 0,
-                max: Number.MAX_VALUE,
+                max: 0,
+                min: Number.MAX_VALUE,
                 count: 0
             };
         }

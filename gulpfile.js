@@ -183,6 +183,7 @@ gulp.task('build', function (cb) {
     runSequence(
         'prepare',
         'build-src',
+        'build-test',
         cb);
 });
 
